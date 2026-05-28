@@ -1,0 +1,80 @@
+\hypearticle
+{Existe uma meia-vida para as taxas de sucesso dos agentes de IA?}
+{Gustavo Neves Moraes}
+{
+
+\hspace*{1.5em} Um time de pesquisadores do METR propuseram um modelo matemático para explicar um fenômeno recorrente: o desempenho decrescente de agentes de IA conforme a duração das tarefas aumenta.
+
+\subtitle{Objeto de Estudo}
+
+\hspace*{1.5em} Ao submeter diferentes modelos de IA a tarefas mais longas (em termos de tempo que um ser humano levaria para realizar), os pesquisadores perceberam que o desempenho das IAs cai de forma previsível. Essa queda segue um padrão matemático conhecido: o modelo de taxa de risco constante, bastante usado em análises de sobrevivência, como no decaimento radioativo - por isso o termo “meia-vida”.
+
+\subtitle{A lógica por trás da queda}
+
+Tarefas mais longas geralmente envolvem várias subtarefas em sequência. Se a IA tem uma chance constante de falhar em
+cada etapa, a probabilidade de sucesso no
+total da tarefa cai exponencialmente
+conforme o aumento do número de etapas.
+
+\highlight{
+    $Pr(Task) = Pr(SubTask_1)* Pr(SubTask_2) * \cdots * Pr(SubTask_n)$
+}
+
+Assim como na meia-vida de um
+elemento radioativo, podemos falar que uma
+“meia-vida de sucesso” para a IA seria o
+tempo (em termos de tempo humano) até
+que a chance de sucesso caia para 50\%.
+
+\subtitle{Exemplo prático}
+
+No caso do modelo Claude 3.7 Sonnet:
+
+\begin{hypeitemize}
+    
+\item Consegue manter  50\% de sucesso em tarefas de até 59 minutos.
+\item Mas se quisermos uma taxa de sucesso de 80\%, o limite de duração cai para apenas 15 minutos.
+\item Esse comportamento segue a previsão teórica de que o tempo para 80\% de sucesso é cerca de 1/3 do tempo para 50%.
+\end{hypeitemize}
+
+\subtitle{Previsão futura: Quanto tempo até melhorar?}
+\hspace*{1.5em} Se assumirmos que o desempenho
+desses agentes dobra a cada 7 meses, como
+sugerem os dados, o estudo estima que:
+
+\begin{hypeitemize}
+\item Para ir de 50\% para 80\% de sucesso em uma mesma tarefa, levará cerca de 1 ano.
+\item Para alcançar 90\%, cerca de 2 anos.
+\item Para 99\%, 4 anos.
+\item Para 99,9\%, 6 anos.
+\end{hypeitemize}
+
+\subtitle{Levar o pensamento humano}
+
+\hspace*{1.5em} Curiosamente, os humanos parecem lidar melhor com tarefas prolongadas. Mesmo em tarefas com duração de 12 horas, humanos ainda apresentaram mais de 20\% de sucesso, contra os 6,25\% previstos pelo modelo exponencial.
+
+\hspace*{1.5em} Isso pode estar relacionado com à capacidade humana de corrigir erros durante o processo ou porque há uma variação natural de desempenho entre pessoas (efeito de mistura populacional). No entanto, levar isso como modelo de comparação revela algumas limitações e críticas.
+
+\subtitle{Limitações e críticas}
+
+\begin{hypeitemize}
+\item Existe um debate sobre o que significa “tempo de tarefa” quando comparado ao tempo que um humano levaria e o de uma IA, pois existem tarefas que os humanos consistentemente se saem melhor e o contrário também acontece.
+\item O modelo de taxa de risco constante é uma aproximação. Ele serve como linha de base teórica, mas ainda faltam dados sobre como a taxa de risco realmente evolui ao longo do tempo para diferentes modelos.
+\end{hypeitemize}
+
+\subtitle{Conclusão}
+
+\hspace*{1.5em} O estudo ajuda a quantificar um problema real e fornece um primeiro modelo matemático para discutir o tema, a ideia de uma “meia-vida de sucesso” para IAs traz uma analogia poderosa para pensar o desempenho ao longo do tempo. Ou seja, mesmo se forem encontrados desvios sistemáticos do decaimento exponencial, como o aumento (ou a diminuição) da taxa de risco com o tempo, isso poderá fornecer dicas úteis sobre o que os agentes estão fazendo de errado (ou certo). Ou seja, o modelo de taxa de risco constante também pode funcionar como uma linha de base teórica a partir da qual se medem os desvios empíricos.
+
+\subtitle{O que é possível aprender?}
+
+\begin{hypeitemize}
+\item IA ainda é pouco confiável em tarefas longas e complexas, mesmo que seja boa em tarefas curtas.
+\item A forma de medir performance ao longo do tempo (com um conceito simples como "half-life") pode ajudar muito a comparar modelos.
+\item Essa métrica abre espaço para novas formas de avaliar a evolução da IA ao longo dos meses, com foco na durabilidade da performance.
+\item Pode ser uma boa inspiração para como medir robustez em nossos próprios projetos de IA.
+\end{hypeitemize}
+
+\originalsource{https://www.tobyord.com/writing/half-life?utm_source=alphasignal}
+
+}

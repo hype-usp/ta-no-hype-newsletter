@@ -1,0 +1,36 @@
+% CONFIGURAÇÕES GERAIS
+
+\raggedbottom
+
+\setlength{\columnsep}{0.8cm}
+\setlength{\emergencystretch}{3em}
+\setlength{\columnseprule}{0.4pt}
+\setlength{\hfuzz}{2pt}
+\setlength{\headheight}{21pt}
+\setlength{\footskip}{33pt}
+
+\def\columnseprulecolor{\color{gray!40}}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+
+% CABEÇALHO
+
+\fancyhead[L]{\textcolor{HypePurple}{\textbf{Tá no Hype}}}
+\fancyhead[R]{\textcolor{HypePurple}{\textbf{\edicaoMes\ \edicaoAno}}}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead[C]{
+\begin{tikzpicture}[remember picture,overlay]
+\shade[left color=HypeOrange,right color=HypePurple]
+(-0.5\textwidth,-0.18cm) rectangle (0.5\textwidth,-0.09cm);
+\end{tikzpicture}
+}
+
+% FIM CABEÇALHO
+
+\fancyfoot[C]{
+\includegraphics[height=1cm]{assets/rodape.png}
+}

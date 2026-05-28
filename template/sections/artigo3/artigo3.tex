@@ -1,0 +1,19 @@
+\hypearticle
+{O problema das LLMs e a Torre de Hanoi}
+{Hugo Cardoso}
+{
+
+\hspace*{1.5em} Nos últimos anos, os modelos de linguagem, conhecidos como LLMs, evoluíram bastante. Antes, eles apenas geravam textos com base no que foi treinado. Agora, parecem até capazes de pensar de forma lógica e resolver problemas mais complexos. Com a chegada dos chamados LRMs, que são modelos pensados para "raciocinar", como o Claude Thinking, Gemini Thinking e DeepSeek-R1, muita gente começou a acreditar que estávamos mais perto de criar uma inteligência artificial realmente inteligente, parecida com a humana.
+\hspace*{1.5em} Esses novos modelos funcionam de um jeito diferente: antes de responder, eles pensam em etapas. Isso é chamado de Chain-of-Thought, ou "cadeia de pensamento". A ideia é que, ao pensar passo a passo, eles consigam chegar a soluções melhores.
+\hspace*{1.5em} Um estudo chamado The Illusion of Thinking, feito por pesquisadores da Apple, tentou responder essa pergunta. Para isso, eles usaram problemas controlados, como o clássico quebra-cabeça da Torre de Hanoi. Nesse jogo, é preciso mover discos de um pino para outro, seguindo regras simples: só dá para mover um disco por vez, e nunca se pode colocar um disco maior em cima de um menor. Parece simples, mas o número de movimentos necessários cresce rápido conforme a quantidade de discos aumenta.
+
+\subtitle{O colapso dos modelos de LRM e LLMs}
+\hspace*{1.5em} Foi justamente aí que os pesquisadores perceberam algo curioso. Quando a dificuldade do problema aumenta, os modelos que pareciam tão bons simplesmente param de funcionar. Mesmo com bastante espaço para gerar respostas (o chamado limite de tokens), os LRMs e LLMs não conseguem mais resolver o problema. Eles travam, ou pior, fazem movimentos errados.
+\hspace*{1.5em} Outro achado marcante é que, mesmo quando os pesquisadores fornecem o algoritmo correto da Torre de Hanoi no prompt, esperando que o modelo apenas execute os passos, o colapso ainda acontece. Isso indica que o problema não está apenas na dificuldade de encontrar uma solução, mas também em seguir instruções lógicas de forma consistente, algo que seres humanos fariam com facilidade, especialmente se o algoritmo estivesse dado.
+
+\subtitle{E tem mais: }
+\hspace*{1.5em} Mesmo quando os cientistas dão o passo a passo certo para resolver a Torre de Hanoi, esperando que o modelo apenas siga as instruções, o erro continua. Ou seja, o problema não está só em descobrir a resposta, mas também em executar uma sequência de instruções simples, o que qualquer pessoa com o algoritmo na mão conseguiria fazer
+\hspace*{1.5em} Esses resultados colocam em xeque a ideia de que os LLMs atuais são capazes de raciocínio generalizável. Embora suas respostas possam parecer “inteligentes”, sua capacidade real de executar passos lógicos, planejar e resolver problemas de forma sistemática ainda é extremamente limitada.
+
+\originalsource{https://ml-site.cdn-apple.com/papers/the-illusion-of-thinking.pdf}
+}

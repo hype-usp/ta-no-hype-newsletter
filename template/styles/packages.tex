@@ -1,0 +1,52 @@
+% IDIOMA E TEXTO GERAL ------------------
+
+\usepackage[brazil]{babel}
+\usepackage[none]{hyphenat}
+
+% LAYOUT GERAL --------------------------
+
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage[
+a4paper,
+top=2cm,
+bottom=1.4cm,
+left=1.1cm,
+right=1.1cm
+]{geometry}
+
+% CORES E VISUAL ------------------------
+
+\usepackage{tcolorbox}
+\usepackage{tikz}
+
+% IMAGENS E LINKS -----------------------
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% FONTE E TIPOGRAFIA --------------------
+
+\usepackage{fontspec}
+
+\setmainfont{Poppins}[
+  Path = fonts/Poppins/,
+  Extension = .ttf,
+  UprightFont = Poppins-Regular,
+  BoldFont = Poppins-Bold,
+  ItalicFont = Poppins-Italic,
+  BoldItalicFont = Poppins-BoldItalic
+]
+
+\newfontfamily\opensansfont{Open Sans}[
+  Path = fonts/OpenSans/,
+  Extension = .ttf,
+  UprightFont = OpenSans-Regular,
+  BoldFont = OpenSans-Bold,
+  ItalicFont = OpenSans-Italic,
+  BoldItalicFont = OpenSans-BoldItalic
+]
+ 
+\usepackage{titlesec}
+\usepackage{enumitem}
