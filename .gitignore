@@ -1,0 +1,12 @@
+# Arquivos de compilação LaTeX
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+
+# Arquivos de lock e trace do MiKTeX
+*.lock
+*Trace.log
