@@ -1,4 +1,4 @@
-% CABEÇALHO DE ARTIGO
+% CABEÇALHO DE ARTIGO ------------------------------------
 
 \newcommand{\articleheader}[2]{
 
@@ -49,7 +49,7 @@ halign=left,
 
 \vspace{0.4cm}
 
-{\large\bfseries\color{HypeBlue} #1}
+{\large\bfseries #1}
 
 }
 
@@ -59,14 +59,16 @@ halign=left,
 
 \vspace{0.3cm}
 
-\noindent
-\colorbox{HypePurple!20}{
-\parbox{0.95\columnwidth}{
-\vspace{0.15cm}
+\begin{tcolorbox}[
+  colback=HypePurple!10,
+  colframe=HypePurple!30,
+  boxrule=0.4pt,
+  arc=3pt,
+  left=6pt, right=6pt,
+  top=6pt, bottom=6pt,
+]
 #1
-\vspace{0.15cm}
-}
-}
+\end{tcolorbox}
 
 }
 

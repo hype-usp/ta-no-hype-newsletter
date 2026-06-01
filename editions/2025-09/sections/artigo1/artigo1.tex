@@ -17,7 +17,10 @@ total da tarefa cai exponencialmente
 conforme o aumento do número de etapas.
 
 \highlight{
-    $Pr(Task) = Pr(SubTask_1)* Pr(SubTask_2) * \cdots * Pr(SubTask_n)$
+\begin{multline*}
+Pr(Task) = \prod_{i=1}^{n} Pr(SubTask_i) = \\
+Pr(SubTask_1) * Pr(SubTask_2) * \cdots * Pr(SubTask_n)
+\end{multline*}
 }
 
 Assim como na meia-vida de um
