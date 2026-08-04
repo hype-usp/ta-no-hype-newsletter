@@ -1,12 +1,12 @@
 # Como contribuir com a "Tá no Hype!"
 
-Este guia é para quem vai **escrever um artigo**, mesmo sem nunca ter usado LaTeX. Você não precisa entender como o template funciona por dentro — só seguir os passos abaixo.
+Este guia é para quem vai **escrever um artigo**, mesmo sem nunca ter usado LaTeX. Você não precisa entender como o template funciona por dentro, basta seguir os passos abaixo.
 
 > Tempo estimado de setup: 15–20 minutos (só na primeira vez).
 
 ---
 
-## 1. Instalar o ambiente
+## 1. Instalar o ambiente (somente na primeira vez)
 
 Você precisa de três coisas: o **VS Code**, uma **distribuição LaTeX** e a extensão **LaTeX Workshop**.
 
@@ -31,23 +31,22 @@ Se ainda não tiver, instale o [Git](https://git-scm.com/downloads). Se você nu
 
 ---
 
-## 2. Clonar o projeto
+## 2. Clonar o projeto (somente na primeira vez)
 
 ```bash
 git clone https://github.com/hype-usp/ta-no-hype-newsletter.git
 cd ta-no-hype-newsletter
 ```
 
-Abra a pasta no VS Code (`code .` no terminal, ou "Abrir Pasta" pelo menu).
+Abra a pasta no VS Code.
 
 ---
 
-## 3. Encontre (ou crie) a pasta da edição
+## 3. Encontre a pasta da edição
 
-Dentro de `editions/`, procure a pasta da edição atual (formato `AAAA-MM`, ex: `2026-09`).
+Dentro de `editions/`, procure a pasta da edição em que você vai escrever (ex: `2026-09`).
 
-- **Se a pasta já existe:** é nela que você vai trabalhar.
-- **Se a edição ainda não existe:** combine com o editor da vez antes de criar, para não duplicar. Depois, copie a pasta `editions/0.template` inteira para dentro de `editions/` e renomeie a cópia para o mês/ano correto.
+> ⚠️ A criação da pasta de uma edição nova é responsabilidade exclusiva do **Diretor**. Se a pasta da edição atual ainda não existir no repositório, não crie você mesmo(a). Avise o Diretor Acadêmico e aguarde (Medida para evitar que duas pessoas criem a mesma edição em paralelo com configurações diferentes).
 
 ---
 
@@ -59,7 +58,7 @@ Dentro de `editions/AAAA-MM/sections/`, crie uma pasta nova com um **nome curto 
 sections/meia-vida-agentes-ia/
 ```
 
-> 💡 O nome da pasta não precisa ser "artigo1", "artigo2" etc. — a ordem em que os artigos aparecem na newsletter é definida depois pelo editor no `main.tex`, e não pelo nome da pasta. Um nome descritivo evita que dois colaboradores usem o mesmo nome de pasta ao mesmo tempo e facilita achar o artigo certo no histórico do Git.
+> O nome da pasta não precisa ser "artigo1" ou "artigo2" (como costa no exemplo). a ordem em que os artigos aparecem na newsletter é definida depois pelo editor no `main.tex`, e não pelo nome da pasta. Um nome descritivo evita que dois colaboradores usem o mesmo nome de pasta ao mesmo tempo e facilita achar o artigo certo no histórico do Git.
 
 Dentro dessa pasta, copie o arquivo de modelo `editions/0.template/sections/artigo1/artigo1.tex` e renomeie para o nome do seu artigo (ex: `meia-vida-agentes-ia.tex`).
 
@@ -67,7 +66,7 @@ Dentro dessa pasta, copie o arquivo de modelo `editions/0.template/sections/arti
 
 ## 5. Escreva seu artigo
 
-Abra o `.tex` que você acabou de criar. Ele já vem com exemplos comentados de todos os recursos disponíveis. **Só edite esse arquivo** — o resto do projeto não deve ser tocado (veja a seção 8).
+Abra o `.tex` que você acabou de criar. Ele já vem com exemplos comentados de todos os recursos disponíveis. **Só edite esse arquivo**, o resto do projeto não deve ser tocado (veja a seção 8 desse documento).
 
 ### Estrutura básica
 
@@ -99,16 +98,16 @@ Fórmulas matemáticas funcionam normalmente (`$...$` ou `\begin{multline*}...\e
 
 ### Ver o resultado (preview)
 
-Com o `.tex` do seu artigo aberto, clique no ícone verde de "play" (▷) no canto superior direito do VS Code, ou use o atalho `Ctrl+Alt+B`. O PDF abre automaticamente numa aba ao lado, mostrando **a edição inteira** (não só o seu artigo) — isso é esperado, porque o projeto já tem uma configuração que diz ao LaTeX Workshop para sempre compilar a partir do `main.tex` da edição, mesmo que você tenha aberto só o arquivo do seu artigo.
+Com o `.tex` do seu artigo aberto, clique no ícone verde de "play" (▷) no canto superior direito do VS Code, ou use o atalho `Ctrl+Alt+B`. O PDF abre automaticamente numa aba ao lado, mostrando **a edição inteira** (não só o seu artigo) isso é totalmente normal, porque o projeto já tem uma configuração que diz ao LaTeX Workshop para sempre compilar a partir do `main.tex` da edição, mesmo que você tenha aberto só o arquivo do seu artigo ;D.
 
-Se aparecer erro de compilação, releia o trecho que você editou por último — geralmente é uma chave `{` ou `}` faltando, ou um caractere especial (`%`, `$`, `&`, `_`) usado sem o `\` na frente.
+Se aparecer erro de compilação, releia o trecho que você editou por último, geralmente é uma chave `{` ou `}` faltando, ou um caractere especial (`%`, `$`, `&`, `_`) usado sem o `\` na frente.
 
 ---
 
 ## 6. Inserir imagens
 
 1. Coloque o arquivo de imagem (`.png` ou `.jpg`, de preferência) **dentro da pasta do seu artigo**.
-2. No `.tex`, use o caminho **a partir da pasta `sections/`** — não apenas o nome do arquivo:
+2. No `.tex`, use o caminho **a partir da pasta `sections/`**, não apenas o nome do arquivo:
 
 ```latex
 \articleimage
@@ -118,8 +117,6 @@ Se aparecer erro de compilação, releia o trecho que você editou por último �
 ```
 
 O primeiro parâmetro (`1.0`) é a largura da imagem em relação à coluna (`1.0` = largura total, `0.7` = 70%, etc.).
-
-⚠️ Usar só `{grafico.png}` no caminho. Como a compilação parte do `main.tex` da edição, o caminho **sempre** precisa começar com `sections/nome-da-sua-pasta/`.
 
 ---
 
@@ -138,7 +135,7 @@ Depois, abra um **Pull Request** no GitHub da sua branch para a `master`. O PR j
 
 Se preferir não usar o Git pelo terminal, você pode subir a pasta do artigo direto pela interface do GitHub ("Add file" → "Upload files") e abrir o PR por lá.
 
-Depois disso, a integração do seu artigo na versão final (incluí-lo no `main.tex` da edição) é feita pelo editor (você não precisa mexer em mais nada).
+Depois disso, a integração do seu artigo na versão final (incluí-lo no `main.tex` da edição) é feita pelo editor — você não precisa mexer em mais nada.
 
 ---
 
@@ -150,8 +147,9 @@ Depois disso, a integração do seu artigo na versão final (incluí-lo no `main
 | Imagens dentro da pasta do seu artigo | `main.tex` da edição (o editor integra os artigos) |
 | | `styles/capa.tex` e `styles/layout.tex` da edição |
 | | `.vscode/`, `.latexmkrc`, `.gitignore`, `.gitattributes` |
+| | Criar a pasta `editions/AAAA-MM/` de uma edição nova (só o Diretor faz isso) |
 
-Se você achar que algo na identidade visual (`shared/`) precisa mudar, converse com quem cuida do template antes de alterar (mudanças ali afetam **todas** as edições.)
+Se você achar que algo na identidade visual (`shared/`) precisa mudar, converse com quem cuida do template antes de alterar — mudanças ali afetam **todas** as edições.
 
 ---
 
@@ -161,7 +159,7 @@ Se você achar que algo na identidade visual (`shared/`) precisa mudar, converse
 Confira se a distribuição LaTeX foi instalada corretamente e se o VS Code está usando a configuração do projeto (arquivo `.vscode/settings.json`, que já vem no repositório). Reabra o VS Code depois de instalar o MiKTeX/TeX Live pela primeira vez.
 
 **Meu artigo não aparece no PDF final.**
-Isso é normal: o `main.tex` da edição precisa ter uma linha `\input{sections/sua-pasta/seu-arquivo.tex}` apontando pro seu artigo. Isso é adicionado pelo editor na hora de integrar — não é algo que você precisa (ou deve) fazer.
+Isso é normal: o `main.tex` da edição precisa ter uma linha `\input{sections/sua-pasta/seu-arquivo.tex}` apontando pro seu artigo. Isso é adicionado pelo editor na hora de integrar, não é algo que você precisa (ou deve) fazer.
 
 **Posso usar comandos de LaTeX que não estão na lista de macros?**
-Sim, comandos básicos (negrito `\textbf{}`, itálico `\textit{}`, links `\href{url}{texto}`, listas numeradas, etc.) funcionam normalmente. Evite mexer em espaçamentos, cores ou fontes na mão — para isso, use as macros prontas, que já seguem a identidade visual do Hype.
+Sim, comandos básicos (negrito `\textbf{}`, itálico `\textit{}`, links `\href{url}{texto}`, listas numeradas, etc.) funcionam normalmente. Evite mexer em espaçamentos, cores ou fontes na mão, para isso, use as macros prontas, que já seguem a identidade visual do Hype.

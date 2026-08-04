@@ -1,4 +1,4 @@
-# Newsletter — Tá no Hype
+# Newsletter: Tá no Hype
 
 Template em LaTeX para produção da newsletter mensal do **Hype Data & AI**.
 
@@ -30,11 +30,13 @@ newsletter/
       ...
 ```
 
-> 👋 **Vai escrever um artigo?** O passo a passo completo (instalação, o que editar, macros, imagens, como enviar) está em **[CONTRIBUTING.md](CONTRIBUTING.md)**. As seções abaixo são para quem está criando uma edição nova ou integrando os artigos.
+> **Vai escrever um artigo?** O passo a passo completo (instalação, o que editar, macros, imagens, como enviar) está em **[CONTRIBUTING.md](CONTRIBUTING.md)**. As seções abaixo são para quem está criando uma edição nova ou integrando os artigos.
 
 ---
 
 ## Como criar uma nova edição
+
+> Responsabilidade exclusiva do Diretor (e demais curiosos que quiserem se aventurar localmente por algum motivo). Colaboradores não devem criar pastas de edição, só a pasta do próprio artigo dentro de uma edição já existente (veja o [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 **1.** Copie o template para uma nova pasta:
 ```bash
@@ -55,7 +57,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-> O nome do arquivo principal é sempre `main.tex` em toda edição — não é necessário renomear.
+> O nome do arquivo principal é sempre `main.tex` em toda edição, não é necessário renomear.
 
 ---
 
