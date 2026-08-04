@@ -1,0 +1,47 @@
+name: Compilar preview da edição
+
+on:
+  pull_request:
+    paths:
+      - "editions/**"
+      - "shared/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detectar edições alteradas
+        id: editions
+        run: |
+          editions=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep -oE '^editions/[^/]+' | sort -u | grep -v '0.template' || true)
+          echo "list<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$editions" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Instalar TeX Live (XeLaTeX)
+        if: steps.editions.outputs.list != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-lang-portuguese \
+            texlive-latex-extra texlive-fonts-extra latexmk
+
+      - name: Compilar cada edição alterada
+        if: steps.editions.outputs.list != ''
+        run: |
+          while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            echo "Compilando $dir"
+            (cd "$dir" && latexmk -xelatex -interaction=nonstopmode main.tex)
+          done <<< "${{ steps.editions.outputs.list }}"
+
+      - name: Publicar PDFs gerados
+        if: steps.editions.outputs.list != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-pdfs
+          path: editions/**/main.pdf

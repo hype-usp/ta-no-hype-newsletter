@@ -10,3 +10,11 @@
 # Arquivos de lock e trace do MiKTeX
 *.lock
 *Trace.log
+# Arquivos de sistema / editor
+.DS_Store
+Thumbs.db
+.lesshst
+*.swp
+
+# Configuração pessoal do Git
+.gitconfig

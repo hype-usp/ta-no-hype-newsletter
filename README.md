@@ -19,15 +19,18 @@ newsletter/
       macros.tex                 # Macros e ambientes customizados
   editions/
     0.template/                  # Base para novas edições (não editar diretamente)
-      ta-no-hype-template.tex    # Arquivo principal
+      main.tex                    # Arquivo principal
       styles/
         layout.tex               # Cabeçalho, rodapé e configurações de página
         capa.tex                 # Capa e sumário da edição
       sections/
         artigo1/                 # Pasta de cada artigo com texto e imagens
     2025-09/                     # Edição de setembro de 2025
+      main.tex                    # Arquivo principal (mesmo nome em toda edição)
       ...
 ```
+
+> 👋 **Vai escrever um artigo?** O passo a passo completo (instalação, o que editar, macros, imagens, como enviar) está em **[CONTRIBUTING.md](CONTRIBUTING.md)**. As seções abaixo são para quem está criando uma edição nova ou integrando os artigos.
 
 ---
 
@@ -38,24 +41,21 @@ newsletter/
 cp -r editions/0.template editions/YYYY-MM
 ```
 
-**2.** No arquivo `ta-no-hype-template.tex`, atualize mês e ano:
+**2.** No arquivo `main.tex` da nova pasta, atualize mês e ano:
 ```latex
 \newcommand{\edicaoMes}{Outubro}
 \newcommand{\edicaoAno}{2025}
 ```
 
-**3.** Renomeie o arquivo principal para facilitar identificação:
-```
-ta-no-hype-template.tex  →  ta-no-hype-YYYY-MM.tex
-```
+**3.** Escreva os artigos nas pastas `sections/nome-do-artigo/`, uma por colaborador (veja o [CONTRIBUTING.md](CONTRIBUTING.md)).
 
-**4.** Escreva os artigos nas pastas `sections/artigo1/`, `artigo2/`, etc.
-
-**5.** Compile com XeLaTeX (duas passadas):
+**4.** Compile com XeLaTeX (via `latexmk -xelatex main.tex`, ou duas passadas manuais):
 ```bash
-xelatex ta-no-hype-YYYY-MM.tex
-xelatex ta-no-hype-YYYY-MM.tex
+xelatex main.tex
+xelatex main.tex
 ```
+
+> O nome do arquivo principal é sempre `main.tex` em toda edição — não é necessário renomear.
 
 ---
 
