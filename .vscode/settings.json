@@ -1,12 +1,17 @@
 {
   "latex-workshop.latex.recipes": [
-    { "name": "XeLaTeX + latexmk", "tools": ["latexmk-xelatex"] }
+    { "name": "XeLaTeX (2 passadas)", "tools": ["xelatex", "xelatex"] }
   ],
   "latex-workshop.latex.tools": [
     {
-      "name": "latexmk-xelatex",
-      "command": "latexmk",
-      "args": ["-xelatex", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"]
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
     }
   ],
   "latex-workshop.latex.recipe.default": "first",
