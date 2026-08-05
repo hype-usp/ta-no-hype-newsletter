@@ -17,11 +17,11 @@ Baixe em [code.visualstudio.com](https://code.visualstudio.com/) e instale norma
 
 | Sistema | Instale |
 |---|---|
-| **Windows** | [MiKTeX](https://miktex.org/download) — na instalação, deixe marcada a opção "Install missing packages on-the-fly: Yes" |
+| **Windows** | [MiKTeX](https://miktex.org/download), recomendo que na instalação, deixe marcada a opção "Install missing packages on-the-fly: Yes" |
 | **macOS** | [MacTeX](https://tug.org/mactex/) (ou `BasicTeX`, mais leve) |
 | **Linux** | `sudo apt install texlive-xetex texlive-lang-portuguese texlive-latex-extra texlive-fonts-extra latexmk` |
 
-⚠️ **Atenção:** este projeto usa fontes customizadas e por isso precisa do motor **XeLaTeX** (não o `pdflatex` padrão). O repositório já vem com um `.vscode/settings.json` e um `.latexmkrc` que configuram isso automaticamente — você só precisa ter o VS Code aberto na pasta raiz do projeto.
+⚠️ **Atenção:** este projeto usa fontes customizadas e por isso precisa do motor **XeLaTeX** (não o `pdflatex` padrão). No entanto o repositório já vem com um `.vscode/settings.json` e um `.latexmkrc` que configuram isso automaticamente, ou seja, você só precisa ter o VS Code aberto na pasta raiz do projeto.
 
 ### 1.3. Extensão LaTeX Workshop
 No VS Code, vá em Extensões (`Ctrl+Shift+X`) e instale **LaTeX Workshop** (autor: James Yu).
