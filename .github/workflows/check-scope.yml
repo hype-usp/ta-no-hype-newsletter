@@ -1,0 +1,40 @@
+name: Verifica escopo do PR
+
+# Falha se o PR alterar qualquer arquivo fora de editions/*/sections/,
+# que é a única área que um VOCÊ colaborador deveria tocar.
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  check-scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Conferir arquivos alterados
+        run: |
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          BAD=""
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            if [[ "$f" =~ ^editions/[^/]+/sections/ ]]; then
+              continue
+            else
+              BAD="$BAD$f"$'\n'
+            fi
+          done <<< "$CHANGED"
+
+          if [ -n "$BAD" ]; then
+            echo "Este PR altera arquivos fora de editions/*/sections/ (área pessoal de cada artigo):"
+            echo "$BAD"
+            echo ""
+            echo "Se isso foi sem querer (ex: 'git add .' pegou coisa a mais), desfaça a mudança nesses arquivos e suba de novo."
+            echo "Se foi intencional (ex: ajuste no template, feito pelo Diretor), pode ignorar este check."
+            exit 1
+          else
+            echo "OK , este PR só altera arquivos dentro de editions/*/sections/."
+          fi
