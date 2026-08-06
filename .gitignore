@@ -22,5 +22,5 @@ Thumbs.db
 # Configuração pessoal do Git
 .gitconfig
 
-preview.pdf
+editions/*/preview/preview.pdf
 editions/*/main/main.pdf
