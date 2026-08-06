@@ -98,9 +98,20 @@ Fórmulas matemáticas funcionam normalmente (`$...$` ou `\begin{multline*}...\e
 
 ### Ver o resultado (preview)
 
-Com o `.tex` do seu artigo aberto, clique no ícone verde de "play" (▷) no canto superior direito do VS Code, ou use o atalho `Ctrl+Alt+B`. O PDF abre automaticamente numa aba ao lado, mostrando **a edição inteira** (não só o seu artigo) isso é totalmente normal, porque o projeto já tem uma configuração que diz ao LaTeX Workshop para sempre compilar a partir do `main.tex` da edição, mesmo que você tenha aberto só o arquivo do seu artigo ;D.
+⚠️ Compilar o `.tex` do seu artigo diretamente **não mostra seu conteúdo** — pelo menos não sozinho. Enquanto seu artigo não for integrado pelo Diretor no `main.tex` da edição, não existe nada que aponte pra ele, então uma compilação normal (`main.tex` da edição) simplesmente não vai incluí-lo.
 
-Se aparecer erro de compilação, releia o trecho que você editou por último, geralmente é uma chave `{` ou `}` faltando, ou um caractere especial (`%`, `$`, `&`, `_`) usado sem o `\` na frente.
+Pra conferir seu artigo sozinho, use o arquivo **`preview.tex`**, que já vem junto na pasta da edição (copiado do template). Abra `preview.tex` e troque só a última linha, o `\input{...}`, pelo caminho do seu artigo:
+
+```latex
+% Troque a linha abaixo pelo caminho do SEU artigo:
+\input{../sections/meia-vida-agentes-ia/meia-vida-agentes-ia.tex}
+```
+
+Depois, com o `preview.tex` aberto (não o seu artigo), clique no ícone verde de "play" (▷) no canto superior direito do VS Code, ou use `Ctrl+Alt+B`. O PDF abre com o visual real da newsletter (cores, fontes, colunas), mas só com o seu artigo dentro — é assim que você confere o resultado enquanto escreve.
+
+`preview.tex` é uma ferramenta **pessoal e local** — edite à vontade pra apontar pro seu artigo, mas não é necessário (nem recomendado) incluir essas mudanças num Pull Request. Como você só vai dar `git add` na pasta do seu artigo (veja a seção 7), isso nem chega a ser um problema na prática.
+
+Se aparecer erro de compilação, releia o trecho que você editou por último — geralmente é uma chave `{` ou `}` faltando, ou um caractere especial (`%`, `$`, `&`, `_`) usado sem o `\` na frente.
 
 ---
 
@@ -112,7 +123,7 @@ Se aparecer erro de compilação, releia o trecho que você editou por último, 
 ```latex
 \articleimage
 {1.0}
-{sections/meia-vida-agentes-ia/grafico.png}
+{../sections/meia-vida-agentes-ia/grafico.png}
 {Legenda explicando a imagem.}
 ```
 

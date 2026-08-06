@@ -18,5 +18,8 @@ Thumbs.db
 .lesshst
 *.swp
 
+
 # Configuração pessoal do Git
 .gitconfig
+
+preview.pdf

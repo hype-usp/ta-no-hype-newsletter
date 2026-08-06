@@ -19,15 +19,25 @@ newsletter/
       macros.tex                 # Macros e ambientes customizados
   editions/
     0.template/                  # Base para novas edições (não editar diretamente)
-      main.tex                    # Arquivo principal
+      main/
+        main.tex                  # Arquivo principal — só o Diretor mexe aqui
+      preview/
+        preview.tex               # Ferramenta pessoal de preview (não versionada com alterações)
       styles/
-        layout.tex               # Cabeçalho, rodapé e configurações de página
-        capa.tex                 # Capa e sumário da edição
+        layout.tex                # Cabeçalho, rodapé e configurações de página
+        capa.tex                  # Capa e sumário da edição
       sections/
-        artigo1/                 # Pasta de cada artigo com texto e imagens
-    2025-09/                     # Edição de setembro de 2025
-      main.tex                    # Arquivo principal (mesmo nome em toda edição)
-      ...
+        artigo1/                  # Pasta de cada artigo com texto e imagens
+    2025-09/                      # Edição de setembro de 2025
+      main/
+        main.tex                   # Arquivo principal (mesmo nome em toda edição)
+      preview/
+        preview.tex
+      styles/
+        layout.tex
+        capa.tex
+      sections/
+        ...
 ```
 
 > **Vai escrever um artigo?** O passo a passo completo (instalação, o que editar, macros, imagens, como enviar) está em **[CONTRIBUTING.md](CONTRIBUTING.md)**. As seções abaixo são para quem está criando uma edição nova ou integrando os artigos.

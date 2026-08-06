@@ -36,7 +36,7 @@ jobs:
           while IFS= read -r dir; do
             [ -z "$dir" ] && continue
             echo "Compilando $dir"
-            (cd "$dir" && latexmk -xelatex -interaction=nonstopmode main.tex)
+            (cd "$dir/main" && latexmk -xelatex -interaction=nonstopmode main.tex)
           done <<< "${{ steps.editions.outputs.list }}"
 
       - name: Publicar PDFs gerados
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: preview-pdfs
-          path: editions/**/main.pdf
+          path: editions/**/main/main.pdf
