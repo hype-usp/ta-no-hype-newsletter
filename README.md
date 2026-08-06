@@ -20,7 +20,7 @@ newsletter/
   editions/
     0.template/                  # Base para novas edições (não editar diretamente)
       main/
-        main.tex                  # Arquivo principal — só o Diretor mexe aqui
+        main.tex                  # Arquivo principal — só o Diretor mexe aqui -- man aqui se pa compensa ser multitenant
       preview/
         preview.tex               # Ferramenta pessoal de preview (não versionada com alterações)
       styles/
