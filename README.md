@@ -9,7 +9,7 @@ Template em LaTeX para produção da newsletter mensal do **Hype Data & AI**.
 ```
 newsletter/
   shared/                        # Arquivos compartilhados entre todas as edições
-    assets/                      # Imagens fixas (logo, rodapé, ícones)
+    assets/                      # Imagens fixas (logo, rodapé)
     fonts/
       poppins/                   # Fonte principal do corpo do texto
       opensans/                  # Fonte dos títulos dos artigos
@@ -17,24 +17,23 @@ newsletter/
       packages.tex               # Pacotes LaTeX e configuração de fontes
       colors.tex                 # Paleta de cores do projeto
       macros.tex                 # Macros e ambientes customizados
+      layout.tex                 # Cabeçalho, rodapé e configurações de página, único para todas as edições
   editions/
-    0.template/                  # Base para novas edições (não editar diretamente)
+    0.template/                  # Base para novas edições, não editar diretamente
       main/
-        main.tex                  # Arquivo principal — só o Diretor mexe aqui
+        main.tex                  # Arquivo principal, só o Diretor mexe aqui
       preview/
-        preview.tex               # Ferramenta pessoal de preview (não versionada com alterações)
+        preview.tex               # Ferramenta pessoal de preview, não deve ser versionada com alterações
       styles/
-        layout.tex                # Cabeçalho, rodapé e configurações de página
         capa.tex                  # Capa e sumário da edição
       sections/
-        artigo1/                  # Pasta de cada artigo com texto e imagens
+        artigo1/                  # Pasta de cada artigo, com texto e imagens
     2025-09/                      # Edição de setembro de 2025
       main/
-        main.tex                   # Arquivo principal (mesmo nome em toda edição)
+        main.tex                   # Arquivo principal, mesmo nome em toda edição
       preview/
         preview.tex
       styles/
-        layout.tex
         capa.tex
       sections/
         ...
@@ -53,7 +52,7 @@ newsletter/
 cp -r editions/0.template editions/YYYY-MM
 ```
 
-**2.** No arquivo `main.tex` da nova pasta, atualize mês e ano:
+**2.** No arquivo `main/main.tex` da nova pasta, atualize mês e ano:
 ```latex
 \newcommand{\edicaoMes}{Outubro}
 \newcommand{\edicaoAno}{2025}
@@ -61,13 +60,14 @@ cp -r editions/0.template editions/YYYY-MM
 
 **3.** Escreva os artigos nas pastas `sections/nome-do-artigo/`, uma por colaborador (veja o [CONTRIBUTING.md](CONTRIBUTING.md)).
 
-**4.** Compile com XeLaTeX (via `latexmk -xelatex main.tex`, ou duas passadas manuais):
+**4.** Compile com XeLaTeX. Entre na pasta `main/` da edição e rode `latexmk -xelatex main.tex`, ou duas passadas manuais:
 ```bash
+cd editions/YYYY-MM/main
 xelatex main.tex
 xelatex main.tex
 ```
 
-> O nome do arquivo principal é sempre `main.tex` em toda edição, não é necessário renomear.
+> O nome do arquivo principal é sempre `main.tex`, dentro da pasta `main/`, em toda edição. Não é necessário renomear.
 
 ---
 
@@ -115,6 +115,6 @@ Texto da seção...
 
 ## Requisitos
 
-- [MiKTeX](https://miktex.org/) ou qualquer distribuição LaTeX com suporte a XeLaTeX
-- Compilar sempre com **XeLaTeX** (não pdfLaTeX)
-- As fontes Poppins e Open Sans já estão incluídas em `shared/fonts/`
+- [MiKTeX](https://miktex.org/) ou qualquer distribuição LaTeX com suporte a XeLaTeX.
+- Compilar sempre com **XeLaTeX**, não pdfLaTeX.
+- As fontes Poppins e Open Sans já estão incluídas em `shared/fonts/`.
