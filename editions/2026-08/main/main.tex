@@ -1,0 +1,50 @@
+\documentclass[11pt,a4paper]{article}
+
+% IMPORTS ---------------------------------------
+
+\input{../../../shared/styles/packages.tex}
+\input{../../../shared/styles/colors.tex}
+\input{../../../shared/styles/layout.tex}
+\input{../../../shared/styles/macros.tex}
+
+% DOCUMENTO -------------------------------------
+
+\begin{document}
+
+\sloppy
+
+\newcommand{\edicaoMes}{MÊS}
+\newcommand{\edicaoAno}{ANO}
+
+% CAPA BONITA -----------------
+
+\input{../styles/capa.tex}
+
+% CONTEÚDO ---------------------
+
+%\raggedcolumns
+\begin{multicols}{2}
+%\raggedcolumns
+
+\input{../sections/artigo1/artigo1.tex}
+%\input{../sections/artigo2/artigo2.tex}
+%\input{../sections/artigo3/artigo3.tex}
+
+% NO FINALZINHO TEM UM NEGOCINHO --
+
+% \columnbreak
+
+\begin{center}
+    
+
+\includegraphics[width=1.0\columnwidth]{../../../shared/assets/final.png}
+
+\end{center}
+{\color{gray}
+Editores:
+Nome 1, Nome 2, ..., Nome n.
+}
+
+\end{multicols}
+
+\end{document}

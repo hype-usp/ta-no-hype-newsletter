@@ -1,0 +1,31 @@
+% preview.tex — arquivo de uso PESSOAL, NÃO faz parte da edição publicada.
+% Use este arquivo pra compilar e ver SEU artigo sozinho, com o visual
+% correto (cores, fontes, colunas), sem esperar ele ser integrado no
+% main.tex da edição.
+%
+% Como usar: troque só a linha do \input{} lá embaixo pelo caminho do
+% SEU artigo, e compile ESTE arquivo (não o seu artigo.tex diretamente).
+%
+% Não é preciso (nem recomendado) subir mudanças feitas aqui num PR,
+% é só uma ferramenta de conferência local, de cada colaborador.
+
+\documentclass[11pt,a4paper]{article}
+
+\input{../../../shared/styles/packages.tex}
+\input{../../../shared/styles/colors.tex}
+\input{../../../shared/styles/layout.tex}
+\input{../../../shared/styles/macros.tex}
+
+\begin{document}
+\sloppy
+
+\newcommand{\edicaoMes}{PREVIEW}
+\newcommand{\edicaoAno}{}
+
+\begin{multicols}{2}
+
+% Troque a linha abaixo pelo caminho do SEU artigo:
+\input{../sections/artigo1/artigo1.tex}
+
+\end{multicols}
+\end{document}
