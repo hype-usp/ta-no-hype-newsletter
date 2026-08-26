@@ -1,0 +1,62 @@
+% !TEX root = ../../main/main.tex
+\hypeexplica{../sections/hype-explica-normalizacao/Padronização X normalização.png}{
+
+\hspace*{1.5em} Por que um modelo de KNN pode ir mal com os dados "do jeito que vieram"? A resposta, quase sempre, é escala. Se uma variável vai de 0 a 1 e outra de 0 a 100.000, o modelo acaba dando peso desproporcional pra que tem os números maiores, mesmo que ela não seja mais importante de verdade. É pra resolver isso que existem normalização e padronização, dois nomes que costumam ser confundidos, até por gente que já usa os dois no dia a dia sem perceber a diferença.
+
+\subtitle{Normalização (Min-Max Scaling)}
+
+\hspace*{1.5em} Reescala os valores pra um intervalo fixo, geralmente entre 0 e 1. Pega o valor, subtrai o mínimo da coluna, e divide pela amplitude (máximo menos mínimo).
+
+\highlight{
+    \begin{center}
+        $x_{norm} = \dfrac{x - x_{min}}{x_{max} - x_{min}}$
+    \end{center}
+}
+
+\subtitle{Padronização (Standardization, Z-score)}
+
+\hspace*{1.5em} Centraliza os dados em torno da média 0, com desvio padrão 1. Não tem intervalo fixo de chegada, o valor pode virar negativo, por exemplo.
+
+\highlight{
+    \begin{center}
+        $x_{padr} = \dfrac{x - \mu}{\sigma}$
+    \end{center}
+}
+
+\subtitle{Um exemplo rápido}
+
+\hspace*{1.5em} Imagine a idade de 4 pessoas: 20, 25, 30 e 65 anos. A média é 35, e o desvio padrão é aproximadamente 17.
+
+\begin{hypeitemize}
+\item Normalizando: 20 vira 0, 65 vira 1 (são o mínimo e o máximo), e 25 vira aproximadamente 0,11;
+\item Padronizando: 20 vira aproximadamente $-0,88$, 65 vira aproximadamente $1,76$, e 35 (a própria média) viraria exatamente 0.
+\end{hypeitemize}
+
+\hspace*{1.5em} Repare que o valor 65, bem mais alto que o resto, "puxa" o intervalo inteiro na normalização, fazendo os outros três números ficarem espremidos perto de 0. Na padronização isso pesa menos, porque o desvio padrão já absorve parte dessa dispersão.
+
+
+\articleimage
+{0.9}
+{../sections/hype-explica-normalizacao/comparacaoEscalas.png}
+{Os mesmos 4 valores de idade antes e depois de cada transformação. Repare como o 65 "empurra" os outros pontos na normalização.}
+
+\subtitle{Quando usar qual}
+
+\begin{hypeitemize}
+\item Normalização funciona bem quando o algoritmo depende de distância e não assume nenhuma distribuição específica, como KNN, k-means e redes neurais;
+\item Padronização é mais robusta a outlier, e é o padrão pra algoritmos que assumem distribuição normal ou usam variância, como regressão logística, SVM e PCA;
+\item Modelos baseados em árvore, como Random Forest e XGBoost, não precisam de nenhuma das duas, eles são invariantes à escala.
+\end{hypeitemize}
+
+\articleimage
+{1.0}
+{../sections/hype-explica-normalizacao/tabela.png}
+{Qual técnica combina com qual tipo de algoritmo.}
+
+\begin{infobox}
+Na dúvida entre as duas: se seu algoritmo usa distância ou gradiente, escale. Se usa árvore de decisão, pode pular essa etapa.
+\end{infobox}
+
+\originalsource{https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html}
+
+}
