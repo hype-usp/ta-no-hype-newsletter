@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+
+% IMPORTS ---------------------------------------
+
+\input{../../../shared/styles/packages.tex}
+\input{../../../shared/styles/colors.tex}
+\input{../../../shared/styles/layout.tex}
+\input{../../../shared/styles/macros.tex}
+
+% DOCUMENTO -------------------------------------
+
+\begin{document}
+
+\sloppy
+
+\newcommand{\edicaoMes}{SETEMBRO}
+\newcommand{\edicaoAno}{2026}
+
+% CAPA BONITA -----------------
+
+\input{../styles/capa.tex}
+
+% CONTEÚDO ---------------------
+
+%\raggedcolumns
+\begin{multicols}{2}
+%\raggedcolumns
+
+\input{../sections/artigo1/artigo1.tex}
+% CASO NECESSARIO: \vspace{5cm} para pular umas colunas e permitir uma formatacao melhor de algumas edições
+%\input{../sections/nome-do-artigo/nome-do-artigo.tex}
+%\input{../sections/nome-do-outro-artigo/nome-do-outro-artigo.tex}
+
+% NO FINALZINHO TEM UM NEGOCINHO --
+
+% \columnbreak
+
+\hypefeedback{https://forms.gle/CcrbS325LZTvCjpVA}
+
+{\color{gray}
+Editores:
+Nome 1, Nome 2, ..., Nome n.
+}
+
+\end{multicols}
+
+\end{document}
