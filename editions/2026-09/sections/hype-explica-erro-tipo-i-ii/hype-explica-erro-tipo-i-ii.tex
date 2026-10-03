@@ -1,0 +1,133 @@
+% !TEX root = ../../main/main.tex
+\hypeexplica{../sections/hype-explica-erro-tipo-i-ii/banner-erro-tipo-i-ii.png}
+{Gustavo Neves}
+{
+
+\hspace*{1.5em} Todo teste estatístico está sujeito a erro,
+isso é inevitável quando se trabalha com amostra em vez de população inteira.
+O que poucas pessoas param pra notar é que existem dois tipos bem diferentes de erro
+escondidos atrás de qualquer "p < 0,05",
+e confundir um com o outro muda completamente a conclusão de um estudo,
+de um teste A/B ou de um exame médico.
+
+\subtitle{Relembrando o teste de hipótese}
+
+\hspace*{1.5em} Todo teste de hipótese parte de uma pergunta prática do
+tipo "esse remédio funciona?" ou "essa mudança no site aumentou a conversão?".
+Para responder isso de forma rigorosa,
+a estatística formaliza a pergunta em duas hipóteses concorrentes, partindo da hipótese nula ($H_0$)
+que normalmente representa o cenário onde "nada mudou", a diferença observada é meramente acaso,
+e, por sua vez, a hipótese alternativa ($H_1$),
+o efeito que se quer demonstrar que existe.
+
+\hspace*{1.5em} Com base nos dados coletados,
+o teste decide entre
+rejeitar $H_0$ (concluir que há evidência de efeito)
+ou não rejeitar $H_0$ (não há evidência suficiente para afirmar que existe efeito).
+Vale evidenciar que a segunda opção é "não rejeitar", diferente de "aceitar como verdadeira".
+
+\hspace*{1.5em} O ponto central é que essa decisão é sempre tomada a partir de uma amostra,
+não da população inteira.
+Por isso, por mais cuidadoso que o teste seja,
+sempre existe uma margem real de erro.
+
+\subtitle{Os dois jeitos de errar}
+
+\hspace*{1.5em} Existem exatamente duas formas de tomar a decisão errada:
+
+\begin{hypeitemize}
+\item \textbf{Erro Tipo I} (falso positivo):
+rejeitar $H_0$ quando ela, na verdade, era verdadeira.
+Ou seja, concluir que existe um efeito que, de fato, não existe.
+A chance de cometer esse erro é o próprio nível de significância,
+$\alpha$ (geralmente fixado em 0,05).
+\item \textbf{Erro Tipo II} (falso negativo):
+não rejeitar $H_0$ quando ela, na verdade, era falsa.
+Ou seja, deixar passar um efeito que de fato existe.
+A chance de cometer esse erro é chamada de $\beta$.
+\end{hypeitemize}
+
+\hspace*{1.5em} São erros de natureza oposta,
+com causas e consequências distintas,
+o que justifica tratá-los como conceitos separados em vez de apenas "o teste errou".
+
+\highlight{
+\begin{center}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lcc}
+\toprule
+ & $H_0$ verdadeira & $H_0$ falsa \\
+\midrule
+Rejeita $H_0$ & Erro Tipo I ($\alpha$) & Decisão correta \\
+Não rejeita $H_0$ & Decisão correta & Erro Tipo II ($\beta$) \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+}
+
+\hspace*{1.5em} Uma forma consolidada de fixar esses conceitos é pensar num julgamento.
+A hipótese nula é "o réu é inocente",
+presunção padrão até prova em contrário.
+Condenar um inocente corresponde a um Erro Tipo I,
+afirmar com convicção algo que não é verdade.
+Soltar um culpado corresponde a um Erro Tipo II,
+deixar passar algo que de fato aconteceu.
+Nenhum sistema de justiça, e nenhum teste estatístico,
+consegue eliminar os dois tipos de erro ao mesmo tempo,
+existe sempre um trade-off entre eles.
+
+% \articleimage
+% {0.9}
+% {../sections/hype-explica-erro-tipo-i-ii/tribunal-erros.png}
+% {Analogia do tribunal: condenar um inocente é Erro Tipo I, soltar um culpado é Erro Tipo II.}
+
+\subtitle{Um exemplo numérico}
+
+\hspace*{1.5em} Considere 1.000 estudos hipotéticos testando um remédio que,
+na realidade, não tem efeito nenhum ($H_0$ verdadeira).
+Com $\alpha = 0{,}05$,
+espera-se que cerca de $1.000 \times 0{,}05 = 50$ desses estudos concluam,
+erradamente, que o remédio funciona.
+
+\hspace*{1.5em} Considere agora outros 1.000 estudos testando um remédio que de fato funciona
+($H_0$ falsa).
+Se o teste utilizado tem poder estatístico de 80\% (ou seja, $\beta = 0{,}20$),
+apenas $1.000 \times 0{,}80 = 800$ desses estudos detectam o efeito real,
+e $200$ deixam passar,
+concluindo erradamente que o remédio não funciona.
+
+\subtitle{Uma ressalva importante}
+
+\hspace*{1.5em} Um equívoco comum é interpretar $\alpha = 0{,}05$ como
+"95\% de chance de o efeito ser real".
+Não é esse o significado.
+$\alpha$ é a chance de errar \textit{dado que} $H_0$ é verdadeira,
+valor fixado antes da coleta dos dados,
+não calculado a partir deles.
+Além disso, $\alpha$ e $\beta$ normalmente estão em tensão,
+reduzir o limite para rejeitar $H_0$ (exigir mais evidência, diminuindo $\alpha$)
+tende a aumentar a chance de deixar passar um efeito real (aumentando $\beta$),
+e o inverso também é verdadeiro.
+A forma de reduzir os dois simultaneamente é aumentar o tamanho da amostra.
+
+\begin{infobox}
+Em segurança de aeroportos,
+um Erro Tipo I corresponde a deter um passageiro sem ameaça alguma (falso alarme).
+Um Erro Tipo II corresponde a deixar passar alguém que de fato representa um risco.
+Dependendo do contexto,
+um erro pode ser consideravelmente mais tolerável que o outro,
+o que exige definir previamente qual prioridade faz mais sentido.
+\end{infobox}
+
+\originalsource{https://www.youtube.com/watch?v=Hdbbx7DIweQ}
+
+\vspace{0.2cm}
+
+{\color{HypePurple2}Quer se aprofundar mais?}\\
+\href{https://errorstatistics.com/wp-content/uploads/2014/08/neyman-pearson-1933_on-the-problem-of-the-most-efficient-tests-of-statistical-hypotheses.pdf}{"On the Problem of the Most Efficient Tests of Statistical Hypotheses"}
+(Neyman e Pearson, 1932),
+que dá nome ao "Lema de Neyman-Pearson",
+usado em testes estatísticos.
+
+}
