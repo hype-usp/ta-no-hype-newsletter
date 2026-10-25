@@ -1,3 +1,12 @@
+\newcounter{hypeartigo}
+
+\newcommand{\hypeartigoanchor}{%
+  \refstepcounter{hypeartigo}%
+  \edef\hypeartigokey{art:\ifnum\value{hypeartigo}<10 0\fi\arabic{hypeartigo}}%
+  \expandafter\label\expandafter{\hypeartigokey}%
+  \expandafter\hypertarget\expandafter{\hypeartigokey}{}%
+}
+
 % CABEÇALHO DE ARTIGO ------------------------------------
 
 \newcommand{\articleheader}[2]{
@@ -33,6 +42,8 @@ halign=left,
 
 \newcommand{\hypearticle}[3]{
 
+\hypeartigoanchor
+
 \vspace{0.1cm}
 
 \articleheader{#1}{#2}
@@ -46,6 +57,8 @@ halign=left,
 % MACRO: HYPE EXPLICA (banner manual + corpo de artigo)
 
 \newcommand{\hypeexplica}[3]{
+
+\hypeartigoanchor
 
 \vspace{0.1cm}
 
@@ -148,16 +161,13 @@ bottom=1mm
 
 % TESTE DE SUMÁRIO -----------------------------------------
 
+\makeatletter
 \newcommand{\summaryitem}[4]{
+\bookmark[dest=art:#1,level=0]{#2}%
+\hyper@linkstart{link}{art:#1}%
 \begin{tcolorbox}[
-    colback=white,
-    colframe=white,
-    boxrule=0pt,
-    arc=4mm,
-    left=4mm,
-    right=4mm,
-    top=3mm,
-    bottom=3mm
+    colback=white, colframe=white, boxrule=0pt,
+    arc=4mm, left=4mm, right=4mm, top=3mm, bottom=3mm
 ]
 
 \begin{minipage}[c]{0.12\linewidth}
@@ -176,15 +186,17 @@ bottom=1mm
 \begin{minipage}[c]{0.12\linewidth}
     \raggedleft
     {\fontsize{28}{28}\selectfont
-    \color{HypePurple}\textbf{#4}}
+    \color{HypePurple}\textbf{\ifcsname r@art:#1\endcsname\ifnum\getpagerefnumber{art:#1}<10 0\fi\pageref*{art:#1}\else #4\fi}}
 
     {\small\color{HypeOrange}\textbf{pág.}}
 \end{minipage}
 
-\end{tcolorbox}
+\end{tcolorbox}%
+\hyper@linkend
 
 \vspace{0.3cm}
 }
+\makeatother
 
 % MACRO: FEEDBACK DA EDIÇÃO ------------------------------
 

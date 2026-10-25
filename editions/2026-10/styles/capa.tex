@@ -1,3 +1,14 @@
+% PÁGINA 1: CAPA (imagem em tela cheia) ---------------------------
+\thispagestyle{empty}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt,anchor=south west] at (current page.south west)
+    {\includegraphics[width=\paperwidth,height=\paperheight]{../styles/capa.png}};
+\end{tikzpicture}
+\clearpage
+
+% PÁGINA 2: SUMÁRIO ------------------------------------------------
+
 \begin{minipage}[t]{0.48\textwidth}
 
 \includegraphics[width=0.65\textwidth]{../../../shared/assets/logo.png}
@@ -41,19 +52,25 @@
 {01}
 {Hype Explica: z-test vs t-test}
 {O \textit{z-test} e o \textit{t-test} podem parecer quase iguais, mas existe uma diferença importante entre eles! Principalmente o quanto sabemos sobre a população. Entenda quando cada um é usado e por que essa escolha pode mudar os resultados.}
-{02}
+{03}
 
 \summaryitem
 {02}
-{Como as pesquisas eleitorais podem acertar ouvindo tão pouca gente?}
-{Como uma pesquisa com pocos milhares pessoas pode representar milhões de eleitores? Entenda como a seleção da amostra e a margem de erro ajudam a estimar a intenção de voto.}
-{04}
+{Project Hail Mary: Entre o entendimento e a compreensão}
+{Muito além de traduzir palavras isoladas, uma boa tradução precisa considerar as relações entre elas. É essa capacidade que torna os \textit{Transformers} tão importantes para a inteligência artificial e que nos faz imaginar como a comunicação entre Grace e Rocky (em \textit{Devoradores de Estrelas}) poderia ser diferente.}
+{05}
 
 \summaryitem
 {03}
 {Moscas estão jogando Minecraft e Xadrez?}
 {Como um cérebro virtual de mosca pode controlar um corpo e realizar ações complexas? Conheça os conectomas, mapas das conexões entre neurônios, e como eles permitem simular comportamentos como voar e se alimentar, além dos desafios científicos e éticos dessas pesquisas.}
-{05}
+{06}
+
+\summaryitem
+{04}
+{Pesquisas eleitorais: Como ouvir poucos e retratar muitos?}
+{Como uma pesquisa com poucos milhares pessoas pode representar milhões de eleitores? Entenda como a seleção da amostra e a margem de erro ajudam a estimar a intenção de voto.}
+{08}
 
 \pagebreak
 
