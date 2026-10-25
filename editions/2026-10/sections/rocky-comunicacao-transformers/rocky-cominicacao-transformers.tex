@@ -1,0 +1,73 @@
+% !TEX root = ../../main/main.tex
+\hypearticle
+{Project Hail Mary: Entre o entendimento e a compreensão}
+{Nathália Pereira}
+{
+
+\subtitle{O início de tudo}
+    \hspace{1cm}No filme \textbf{Project Hail Mary (2026), em português Devoradores de Estrelas}, é descrito
+    uma realidade de ficção científica, em que toda forma de vida no planeta Terra encontra-se em risco de extinção devido a uma forma extraterrestre parasita
+    que consome o Sol. 
+
+    \hspace{1cm}Um jovem biólogo e professor de ciências, Ryland Grace, foi selecionado para estudar a forma devoradora
+    e posteriormente ser lançado em uma missão espacial para estudar e analisar o funcionamento de uma estrela que não foi consumida (Tau Ceti). 
+    Nessa jornada, Grace encontra outro ser extraterrestre, declarado por "Rocky", entretanto houve uma barreira a ambos: \textbf{a comunicação.}
+
+    \hspace{1cm}Dessa forma, a base delimitada provocou \textbf{grandes lacunas} para o diálogo fluido e exato entre os seres, e deixou a interpretação de Rocky simples. 
+
+    \hspace{1cm}Dito isso, surge uma grande dúvida:
+\subtitle{\begin{infobox} Há como otimizar a tradução?  \end{infobox}}
+\subtitle{Os Transformers}
+    \hspace{1cm} Por meados de 2017, houve a apresentação do modelo de \textbf{Transformers}, uma ramificação do Deep Learning, pelo artigo científico
+    \textbf{"Attention is All you Need"}. O modelo tem revolucionado o processo de tradução a partir de \textbf{mecanismos de atenção}, e consequentemente
+    lida com uma linguística complexa por meio de implementação de \textbf{contexto} à sua estrutura.
+
+    \hspace{1cm}De início, é importante apresentar que cada palavra utilizada passa a ser expressada como um \textbf{vetor}, uma vez que por uma modelagem matemática formalizada em
+    conjunto do sentido do vetor, o computador aprende a similaridade entre palavras e, posteriormente, sequências. Uma maneira de visualizar
+    essa transformação vetorial é pela própria noção de linguagem, já que permite a compreensão entre o humano e o computador.
+
+\subtitle{Mas como funcionam?}
+    \hspace{1cm}O padrão é uma arquitetura por \textbf{codificador e decodificador}. 
+
+    \articleimage
+    {1.0}
+    {/home/nath/newsletter102026/ta-no-hype-newsletter/editions/2026-10/sections/rocky-comunicacao-transformers/foto2.png}
+    {Estrutura do modelo de Transformers}
+
+    \hspace{1cm}No codificador, cada palavra da sequencia possui um valor de correlação, ou seja, 
+    a partir de cálculos internos, uma recorrência é atribuída para cada posição dentro da frase. Assim o decodificador, pela análise de posições anteriores que a ser trabalhada
+    no momento, produz a entrada em conjunto da saída do programa e a computa sequencialmente. 
+
+    \hspace{1cm}Esse mecanismo origina-se das estratégias denominadas \textbf{"Scaled Dot-Product Attention" e "Multi-Head Attention"}, que, respectivamente, se caracteriza por otimizar o cálculo
+    da atenção e torná-lo mais eficiente, a partir da formalização de pesos por produtos escalares, enquanto a segunda consiste em trabalhar com diferentes mecanismos de atenção em paralelo,
+    combinando seus resultados posteriormente. 
+
+    \hspace{1cm}Por consequência, é permitido ao modelo analisar diferentes representações de uma mesma palavra em função de sua posição e do contexto da frase, identificando relações entre 
+    as palavras e atribuindo-lhes diferentes níveis de importância. 
+    
+    \hspace{1cm}Dessa forma, o contexto é construído e utilizado continuamente pelo modelo, que prevê a próxima palavra com base nas palavras anteriores.
+
+    \articleimage
+    {1.0}
+    {/home/nath/newsletter102026/ta-no-hype-newsletter/editions/2026-10/sections/rocky-comunicacao-transformers/foto1.png}
+    {Scaled Dot-Product Attention e Multi-Head Attention}
+
+\subtitle{Resultados}
+    \hspace{1cm} Na tradução de inglês para alemão da World Memory Teste (WMT) em 2014, o qual mede o nível de desempenho intelectual geral e o QI de forma rápida pela memorização, o modelo Transformer
+    supera os melhores modelos anteriores de camadas por convolução (CNN) e por recorrencia (RNN) e em mais de 2,0 pontos na métrica Bilingual Evaluation Understudy (BLEU), que é um algoritmo automático usado para avaliar
+    a qualidade de textos gerados por computador, de maneira a estabelecer um novo recorde com uma pontuação BLEU de 28,4, sendo essa \textbf{nota considerada altíssima e revolucionária}.
+
+\subtitle{Considerações finais}
+    \hspace{1cm}Por fim, penso em como a comunicação entre Grace e Rocky poderia ter sido mais fácil e dinâmica, assim como a troca cultural entre espécies, caso o modelo descrito anteriormente fosse utilizado para elevar
+    \textbf{o nível de complexidade e profundidade das relações nesse contexto}. 
+    
+    \hspace{1cm}Afinal, como disse Nelson Mandela:
+    \begin{infobox} "Se você falar com um homem numa linguagem que ele compreende, isso entra na cabeça dele. Se você falar com ele em sua própria
+    linguagem, você atinge seu coração."\end{infobox} 
+    
+    \hspace{1cm}Acredito que essa ideia se aplica a todas as possíveis formas de vida inteligentes existentes.
+
+
+\originalsource{https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf}
+
+}
