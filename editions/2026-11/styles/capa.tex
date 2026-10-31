@@ -1,0 +1,59 @@
+% PÁGINA 1: CAPA (imagem em tela cheia) ---------------------------
+\thispagestyle{empty}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt,anchor=south west] at (current page.south west)
+    {\includegraphics[width=\paperwidth,height=\paperheight]{../styles/capa.png}};
+\end{tikzpicture}
+\clearpage
+
+% PÁGINA 2: SUMÁRIO ------------------------------------------------
+
+\begin{minipage}[t]{0.48\textwidth}
+
+\includegraphics[width=0.65\textwidth]{../../../shared/assets/logo.png}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+
+\vspace{-2.0cm}
+
+\raggedleft
+
+{\fontsize{26}{28}\selectfont
+\bfseries
+\color{HypeOrange}
+\edicaoMes
+}
+
+\vspace{0.1cm}
+
+{\fontsize{22}{24}\selectfont
+\bfseries
+\color{HypePurple}
+\edicaoAno
+}
+
+\end{minipage}
+
+\vspace{0.3cm}
+
+%\begin{center}
+
+% \includegraphics[width=0.5\textwidth]{../shared/assets/capa.png}
+
+% \end{center}
+
+
+\vspace{1.5cm}
+
+\summaryitem
+{01}
+{Título}
+{Síntese do titulo}
+{03}
+
+\pagebreak
+
+\vspace{0.3cm}

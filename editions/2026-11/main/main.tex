@@ -1,0 +1,50 @@
+\documentclass[11pt,a4paper]{article}
+
+% IMPORTS ---------------------------------------
+
+\input{../../../shared/styles/packages.tex}
+\input{../../../shared/styles/colors.tex}
+\input{../../../shared/styles/layout.tex}
+\input{../../../shared/styles/macros.tex}
+
+% DOCUMENTO -------------------------------------
+
+\begin{document}
+
+\sloppy
+
+\newcommand{\edicaoMes}{NOVEMBRO}
+\newcommand{\edicaoAno}{2026}
+
+% CAPA BONITA -----------------
+
+\input{../styles/capa.tex}
+
+% CONTEÚDO ---------------------
+
+%\raggedcolumns
+\begin{multicols}{2}
+%\raggedcolumns
+
+%\input{../sections/hype-explica-z-vs-t/t-test-vs-z-test.tex}
+% CASO NECESSARIO: \vspace{5cm} para pular umas colunas e permitir uma formatacao melhor de algumas edições
+%\input{../sections/nome-do-artigo/nome-do-artigo.tex}
+%\input{../sections/nome-do-outro-artigo/nome-do-outro-artigo.tex}
+
+% NO FINALZINHO TEM UM NEGOCINHO --
+
+% \columnbreak
+
+\hypefeedback{https://forms.gle/CcrbS325LZTvCjpVA}
+
+{\color{gray}
+\textbf{Editores:}
+Gustavo Neves Moraes.
+\vspace{0.1cm}
+\textbf{Capa:}
+Texto.
+}
+
+\end{multicols}
+
+\end{document}
