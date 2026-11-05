@@ -1,6 +1,105 @@
 \hypeexplica{../sections/decision-tree/decision-tree.png}
 {Gustavo Neves Moraes}
 {
-AAAA.
+
+\hspace*{1.5em}
+Árvores de decisão estão entre os modelos de aprendizado supervisionado mais intuitivos. 
+O modelo é, simploriamente falando, uma sequência de perguntas de sim ou não,
+encadeadas como em um fluxograma.
+Costumam ser apresentadas como modelos de classificação,
+em que a resposta a prever é uma categoria (por exemplo, saudável ou doente),
+mas também funcionam para regressão, em que a resposta é um número.
+Este Hype Explica mostra como a árvore escolhe suas perguntas
+e um pouco da matemática por trás dessa escolha.
+
+\subtitle{Uma árvore é uma partição do espaço}
+
+\hspace*{1.5em}
+Considere 10 pacientes com idade e glicose medidas, classificados como saudáveis (S) ou doentes (D).
+Cada paciente é um ponto no plano (idade, glicose).
+Uma pergunta como ``glicose $<$ 105?'' corta o plano por uma reta perpendicular a um dos eixos,
+e repetir o processo dentro de cada metade divide o plano em retângulos, que são as folhas da árvore.
+Para prever a classe de um novo paciente, basta ver em qual retângulo ele cai
+e devolver a classe mais frequente entre os pacientes daquele retângulo
+(na regressão, devolve-se a média das respostas).
+
+\articleimage{0.9}{../sections/decision-tree/particao-arvore.png}{Árvore de decisão como partição do plano: três cortes, numerados na ordem em que são escolhidos, geram quatro regiões.}
+
+\subtitle{Como a árvore escolhe a pergunta}
+
+\hspace*{1.5em}
+Em cada nó, a árvore testa várias perguntas possíveis e fica com a melhor.
+Para decidir qual é a melhor, é preciso medir o quanto um nó está misturado, ou seja, sua impureza.
+Uma medida muito usada é o índice de Gini,
+em que $\hat{p}_k$ é a proporção de observações da classe $k$ no nó:
+
+\[
+G = 1 - \sum_{k} \hat{p}_{k}^{\,2}.
+\]
+
+\hspace*{1.5em}
+O índice vale zero quando o nó é puro (todas as observações são da mesma classe)
+e é máximo quando as classes aparecem em proporções iguais.
+Cada pergunta divide o nó em dois filhos,
+e a árvore escolhe aquela cujos filhos têm a menor impureza média,
+ponderada pelo número de observações de cada um.
+
+\subtitle{Um exemplo numérico}
+
+\hspace*{1.5em}
+Na raiz, os 10 pacientes incluem 5 doentes, então $G = 1 - (0{,}5^2 + 0{,}5^2) = 0{,}5$,
+a impureza máxima para duas classes.
+A pergunta ``glicose $<$ 105?'' separa 4 pacientes à esquerda, todos saudáveis ($G = 0$),
+e 6 à direita, dos quais 5 são doentes ($G \approx 0{,}278$).
+A impureza média ponderada é $0{,}4 \cdot 0 + 0{,}6 \cdot 0{,}278 \approx 0{,}167$,
+bem menor que os $0{,}5$ iniciais.
+Outras perguntas deixam os filhos mais misturados: ``idade $<$ 65?'', por exemplo, resulta em $0{,}375$.
+
+\hspace*{1.5em}
+Repetindo o procedimento na região da direita,
+a árvore faz mais dois cortes (idade $<$ 60,5 e idade $<$ 65)
+e termina com quatro folhas puras.
+Esse método é chamado de guloso (em inglês, \textit{greedy}),
+pois escolhe a melhor pergunta de cada momento sem olhar para o futuro.
+
+\subtitle{Quando a árvore decora os dados}
+
+\hspace*{1.5em}
+Sem outro critério de parada, a árvore cresce até folhas puras e acerta todo o conjunto de treino,
+mas isso não garante bom desempenho em dados novos (lembre que um bom modelo é aquele que aprende padrões que generalizem bem seus dados de teste).
+Folhas com poucas observações estimam as proporções com muito ruído.
+É o compromisso entre viés e variância.
+Árvores rasas têm viés alto e variância baixa (underfitting),
+e árvores profundas têm viés baixo e variância alta (overfitting).
+Há duas formas de controlar o tamanho:
+
+\begin{hypeitemize}
+    \item \textbf{Pré-poda:} limita o crescimento durante a construção, com profundidade máxima ou mínimo de observações por folha.
+    \item \textbf{Pós-poda:} cresce uma árvore grande e depois remove os ramos que melhoram pouco o ajuste, com o nível de poda escolhido por validação cruzada (testando o modelo em dados que ficaram de fora do treino).
+\end{hypeitemize}
+
+\subtitle{E na regressão?}
+
+\hspace*{1.5em}
+Quando a resposta é numérica, a árvore continua sendo uma partição do espaço em retângulos,
+e quase tudo é reaproveitado.
+No entanto, existem dois pontos que valem a pena serem comentados:
+a previsão de cada folha passa a ser a média das respostas que caíram nela,
+e a impureza do nó passa a ser medida pela variância das respostas
+(o quanto elas se afastam da média da folha).
+
+\subtitle{Pontos fortes e limitações}
+
+\hspace*{1.5em}
+As árvores são interpretáveis, pois cada previsão é uma regra do tipo ``se--então''.
+Em contrapartida, uma única árvore é instável,
+já que pequenas mudanças nos dados podem alterar sua estrutura.
+Combinar muitas árvores (como em florestas aleatórias e boosting) costuma melhorar o desempenho, ao custo da interpretabilidade.
+
+\originalsource{https://github.com/Sapin07/arvore-tutoria}
+
+\vspace{0.3em}
+{\small\color{HypePurple2}Quer se aprofundar mais?}
+\href{https://www.statlearning.com/}{James, Witten, Hastie e Tibshirani, An Introduction to Statistical Learning, cap. 8.}
 
 }
