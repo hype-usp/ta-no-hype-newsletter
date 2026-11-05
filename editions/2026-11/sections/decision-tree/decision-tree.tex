@@ -23,7 +23,7 @@ Para prever a classe de um novo paciente, basta ver em qual retângulo ele cai
 e devolver a classe mais frequente entre os pacientes daquele retângulo
 (na regressão, devolve-se a média das respostas).
 
-\articleimage{0.9}{../sections/decision-tree/particao-arvore.png}{Árvore de decisão como partição do plano: três cortes, numerados na ordem em que são escolhidos, geram quatro regiões.}
+\articleimage{0.9}{../sections/decision-tree/particao-arvore.png}{Árvore de decisão como partição do plano em três cortes, numerados na ordem em que são escolhidos, geram quatro regiões.}
 
 \subtitle{Como a árvore escolhe a pergunta}
 
@@ -59,8 +59,8 @@ Outras perguntas deixam os filhos mais misturados: ``idade $<$ 65?'', por exempl
 Repetindo o procedimento na região da direita,
 a árvore faz mais dois cortes (idade $<$ 60,5 e idade $<$ 65)
 e termina com quatro folhas puras.
-Esse método é chamado de guloso (em inglês, \textit{greedy}),
-pois escolhe a melhor pergunta de cada momento sem olhar para o futuro.
+Esse método é chamado de guloso (\textit{greedy}),
+pois escolhe a melhor pergunta de cada momento sem "olhar" para o futuro.
 
 \subtitle{Quando a árvore decora os dados}
 
@@ -69,32 +69,78 @@ Sem outro critério de parada, a árvore cresce até folhas puras e acerta todo 
 mas isso não garante bom desempenho em dados novos (lembre que um bom modelo é aquele que aprende padrões que generalizem bem seus dados de teste).
 Folhas com poucas observações estimam as proporções com muito ruído.
 É o compromisso entre viés e variância.
-Árvores rasas têm viés alto e variância baixa (underfitting),
-e árvores profundas têm viés baixo e variância alta (overfitting).
+Árvores rasas têm viés alto e variância baixa (\textit{underfitting}),
+e árvores profundas têm viés baixo e variância alta (\textit{overfitting}).
 Há duas formas de controlar o tamanho:
 
 \begin{hypeitemize}
-    \item \textbf{Pré-poda:} limita o crescimento durante a construção, com profundidade máxima ou mínimo de observações por folha.
-    \item \textbf{Pós-poda:} cresce uma árvore grande e depois remove os ramos que melhoram pouco o ajuste, com o nível de poda escolhido por validação cruzada (testando o modelo em dados que ficaram de fora do treino).
+    \item \textbf{Pré-poda:} Limita o crescimento durante a construção, com profundidade máxima ou mínimo de observações por folha.
+    \item \textbf{Pós-poda:} Cresce uma árvore grande e depois remove os ramos que melhoram pouco o ajuste, com o nível de poda escolhido por validação cruzada (testando o modelo em dados que ficaram de fora do treino).
 \end{hypeitemize}
 
 \subtitle{E na regressão?}
 
 \hspace*{1.5em}
 Quando a resposta é numérica, a árvore continua sendo uma partição do espaço em retângulos,
-e quase tudo é reaproveitado.
-No entanto, existem dois pontos que valem a pena serem comentados:
-a previsão de cada folha passa a ser a média das respostas que caíram nela,
+e quase todos os conceitos que vamos até o momento podem ser reaproveitados.
+No entanto, existem dois pontos que valem a pena serem comentados.
+A previsão de cada folha passa a ser a média das respostas que caíram nela,
 e a impureza do nó passa a ser medida pela variância das respostas
 (o quanto elas se afastam da média da folha).
+
+\subtitle{Colocando em prática com o scikit-learn}
+
+\hspace*{1.5em}
+Em Python, o \texttt{scikit-learn} implementa árvores de decisão nas classes
+\texttt{DecisionTreeClassifier} (classificação) e \texttt{DecisionTreeRegressor} (regressão),
+ambas no módulo \texttt{sklearn.tree}.
+O código abaixo reproduz o exemplo dos 10 pacientes:
+
+\highlight{\ttfamily\footnotesize\raggedright
+from sklearn.tree import DecisionTreeClassifier\\[0.4em]
+arvore = DecisionTreeClassifier(\\
+~~~~criterion="gini", random\_state=42)\\
+arvore.fit(X, y)\\
+arvore.predict([[50, 140]])~~ \# 'D' (doente)
+}
+
+\hspace*{1.5em}
+Os cortes encontrados são os mesmos do exemplo numérico, glicose $\leq$ 105, idade $\leq$ 60,5 e idade $\leq$ 65.
+O valor do limiar é sempre o ponto médio entre duas observações vizinhas,
+e por isso aparece 105 (entre 100 e 110).
+Para ver a árvore treinada, a função \texttt{export\_text} mostra as regras em texto
+e \texttt{plot\_tree} desenha o diagrama.
+
+\subtitle{Controlando o tamanho da árvore}
+
+\hspace*{1.5em}
+Os conceitos das seções anteriores aparecem como hiperparâmetros do modelo:
+
+\begin{hypeitemize}
+    \item \textbf{\texttt{criterion}:} Mdida de impureza, \texttt{"gini"} (padrão) que vimos neste Hype Explica, mas também existe a \texttt{"entropy"} na classificação, e \texttt{"squared\_error"} (padrão) na regressão.
+    \item \textbf{\texttt{max\_depth}, \texttt{min\_samples\_leaf}:} Limitam a profundidade e o número mínimo de observações por folha.
+    \item \textbf{\texttt{ccp\_alpha}:} Pós-poda, quanto maior o valor, mais ramos são removidos.
+\end{hypeitemize}
+
+\hspace*{1.5em}
+Para regressão, basta trocar a classe, e a previsão passa a ser a média da folha:
+
+\highlight{\ttfamily\footnotesize\raggedright
+from sklearn.tree import DecisionTreeRegressor\\[0.4em]
+modelo = DecisionTreeRegressor(\\
+~~~~max\_depth=2, min\_samples\_leaf=5)\\
+modelo.fit(X\_treino, y\_treino)\\
+modelo.predict(X\_teste)
+}
 
 \subtitle{Pontos fortes e limitações}
 
 \hspace*{1.5em}
-As árvores são interpretáveis, pois cada previsão é uma regra do tipo ``se--então''.
+As árvores são interpretáveis, pois cada previsão é uma regra do tipo ``if-else''.
 Em contrapartida, uma única árvore é instável,
 já que pequenas mudanças nos dados podem alterar sua estrutura.
 Combinar muitas árvores (como em florestas aleatórias e boosting) costuma melhorar o desempenho, ao custo da interpretabilidade.
+Para quem se interessar no tópico, vale uma pesquisa sobre Random Forest.
 
 \originalsource{https://github.com/Sapin07/arvore-tutoria}
 
